@@ -1,1 +1,28 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DevOps Assignment</title>
+</head>
+<body>
+    <h1>Frontend → Backend Demo</h1>
+
+    <button onclick="loadStatus()">Get Application Status</button>
+
+    <pre id="output"></pre>
+
+    <script>
+        async function loadStatus() {
+            try {
+                const response = await fetch("http://localhost:5000/api/status");
+                const data = await response.json();
+                document.getElementById("output").textContent =
+                    JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById("output").textContent =
+                    "Error connecting to backend";
+            }
+        }
+    </script>
+</body>
+</html>
